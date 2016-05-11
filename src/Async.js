@@ -37,23 +37,23 @@ function thenPromise (promise, callback) {
 }
 
 function debounce(func, wait, immediate) {
-  let timeout;
-  return function () {
-    const context = this;
-    const args = arguments;
-    const later = function () {
-      timeout = null;
-      if (!immediate) {
-        func.apply(context, args);
-      }
-    };
-    const callNow = immediate && !timeout;
-    clearTimeout(timeout);
-    timeout = setTimeout(later, wait);
-    if (callNow) {
-      func.apply(context, args);
-    }
-  };
+	let timeout;
+	return function () {
+		const context = this;
+		const args = arguments;
+		const later = function () {
+			timeout = null;
+			if (!immediate) {
+				func.apply(context, args);
+			}
+		};
+		const callNow = immediate && !timeout;
+		clearTimeout(timeout);
+		timeout = setTimeout(later, wait);
+		if (callNow) {
+			func.apply(context, args);
+		}
+	};
 }
 
 const stringOrNode = React.PropTypes.oneOfType([
@@ -64,7 +64,7 @@ const stringOrNode = React.PropTypes.oneOfType([
 const Async = React.createClass({
 	propTypes: {
 		cache: React.PropTypes.any,                     // object to use to cache results, can be null to disable cache
-    delay: React.PropTypes.number,                  // delay to load async options, default 0
+		delay: React.PropTypes.number,                  // delay to load async options, default 0
 		ignoreAccents: React.PropTypes.bool,            // whether to strip diacritics when filtering (shared with Select)
 		ignoreCase: React.PropTypes.bool,               // whether to perform case-insensitive filtering (shared with Select)
 		isLoading: React.PropTypes.bool,                // overrides the isLoading state when set to true
@@ -80,7 +80,7 @@ const Async = React.createClass({
 	getDefaultProps () {
 		return {
 			cache: true,
-      delay: 0,
+			delay: 0,
 			ignoreAccents: true,
 			ignoreCase: true,
 			loadingPlaceholder: 'Loading...',
@@ -169,7 +169,7 @@ const Async = React.createClass({
 		} else if (!options.length && this._lastInput.length < this.props.minimumInput) {
 			noResultsText = this.props.searchPromptText;
 		}
-    let onInputChange = delay ? debounce(this.loadOptions, delay) : this.loadOptions;
+		let onInputChange = delay ? debounce(this.loadOptions, delay) : this.loadOptions;
 
 		return (
 			<Select
